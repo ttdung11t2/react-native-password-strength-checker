@@ -3,4 +3,4 @@
  */
 
 import PasswordStrengthChecker from './components/PasswordStrengthChecker';
-export PasswordStrengthChecker;
+export default PasswordStrengthChecker;
