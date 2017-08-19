@@ -1,6 +1,6 @@
 {
   "name": "react-native-password-strength-checker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A react-native password input with strength checker for both IOS and Android",
   "main": "index.js",
   "scripts": {
