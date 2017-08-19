@@ -161,18 +161,18 @@ export default class PasswordStrengthChecker extends Component {
   renderPasswordInput() {
     return (
       <View style={[styles.inputWrapper, this.props.inputWrapperStyle]}>
-  <TextInput
-    {...this.props}
-    autoCapitalize="none"
-    autoCorrect={false}
-    multiline={false}
-    underlineColorAndroid="transparent"
-    selectionColor="#fff"
-    style={[styles.input, this.props.inputStyle]}
-    onChangeText={text => this.onChangeText(text)}
-  />
-  </View>
-  );
+        <TextInput
+          {...this.props}
+          autoCapitalize="none"
+          autoCorrect={false}
+          multiline={false}
+          underlineColorAndroid="transparent"
+          selectionColor="#fff"
+          style={[styles.input, this.props.inputStyle]}
+          onChangeText={text => this.onChangeText(text)}
+        />
+      </View>
+    );
   }
   
   renderPasswordStrength() {
@@ -194,21 +194,21 @@ export default class PasswordStrengthChecker extends Component {
     
     return (
       <View style={[styles.passwordStrengthWrapper, this.props.strengthWrapperStyle]}>
-  <View style={[styles.passwordStrengthBar, this.props.strengthBarStyle, { backgroundColor: this.props.barColor, width: barWidth }]}>
-  <View style={[styles.innerPasswordStrengthBar, this.props.innerStrengthBarStyle, { ...strengthLevelBarStyle }]} />
-  </View>
-    <Text style={[styles.strengthDescription, this.props.strengthDescriptionStyle, { ...strengthLevelLabelStyle }]}>{strengthLevelLabel}</Text>
-    </View>
+        <View style={[styles.passwordStrengthBar, this.props.strengthBarStyle, { backgroundColor: this.props.barColor, width: barWidth }]}>
+          <View style={[styles.innerPasswordStrengthBar, this.props.innerStrengthBarStyle, { ...strengthLevelBarStyle }]} />
+        </View>
+        <Text style={[styles.strengthDescription, this.props.strengthDescriptionStyle, { ...strengthLevelLabelStyle }]}>{strengthLevelLabel}</Text>
+      </View>
   );
   }
   
   render() {
     return (
       <View style={styles.wrapper}>
-    {this.renderPasswordInput()}
-    {this.renderPasswordStrength()}
-  </View>
-  );
+        {this.renderPasswordInput()}
+        {this.renderPasswordStrength()}
+      </View>
+    );
   }
 }
 
