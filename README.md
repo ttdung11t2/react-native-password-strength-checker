@@ -10,6 +10,10 @@ A react-native password input with strength checker for both IOS and Android
 ## Dependencies
 This Component is built using [Dropbox zxcvbn password strength estimator library](https://github.com/dropbox/zxcvbn)
 
+## Screenshots
+
+![2017-08-21 01_27_00](https://thumbs.gfycat.com/BackSecondhandHoverfly-size_restricted.gif)
+
 ## Installation
 
 ```sh
@@ -18,11 +22,11 @@ npm install react-native-password-strength-checker --save
 
 ## Usage
 ### Basic
-Import this module:
+Import this module:  
 ```javascript
 import PasswordStrengthChecker from 'react-native-password-strength-checker';
 ```
-Use as a component:
+Use as a component:  
 ```javascript
 const strengLevels = [
       {
@@ -68,14 +72,14 @@ const strengLevels = [
 ```
 
 ### Customization
-- Define min length for password.
+- Define min length for password.  
 **Default**: `6`
-- Rules: _digits_, _letters_, _words_, _symbols_, _upperCase_, _lowerCase_.
-Separate rules with **|**.
+- Rules: _digits_, _letters_, _words_, _symbols_, _upperCase_, _lowerCase_.  
+Separate rules with **|**.  
 **Default**:  `{ ruleNames: 'lowerCase|upperCase|digits|symbols' }`
-- Define min level to pass validation (0,1,2,3,4)
+- Define min level to pass validation (0,1,2,3,4)  
 **Default**: `{ minLevel: 2}`
-- Define and enable too short case:
+- Define and enable too short case:  
 **Default**: `
     {
         tooShort: {
@@ -86,9 +90,9 @@ Separate rules with **|**.
           innerBarColor: '#fe6c6c'
         }
     }
-    `
+    `  
     Enable to show it when password length is too short
-- Define strength labels and label colors, strength bar colors, percentage of width for each level
+- Define strength labels and label colors, strength bar colors, percentage of width for each level  
 **Default**: ` { strengthLevels: [
       {
         label: 'Weak',
@@ -123,14 +127,14 @@ Separate rules with **|**.
     ] }`
 
 ### Properties
-This component uses the same props as <TextInput>. Below are additional props for this component:
+This component uses the same props as <TextInput>. Below are additional props for this component:  
 
-Prop                | Type     | Optional | Default    | Description
-------------------- | -------- | -------- | ---------- | ------------------
+Prop        | Type    | Optional | Defaul  | Description
+----------- | ------- | -------- | ------- | -----------------------
 `minLength`         | number   | Yes      | 6          | Min length for password
-`ruleNames`         | string   | Yes      | `lowerCase \| upperCase \| digits \| symbols` | List of rule name to check password
-`strengLevels`      | object array | Yes   |   | List of password strength level with label, label color, percentage of width, bar color
-`tooShort`          | object   | Yes      |            | enabled, label, label color, percentage of width, bar color for too short
+`ruleNames`         | string   | Yes      | _Above_      | List of rule name to check password
+`strengLevels`      | object array | Yes   | _Above_    | List of password strength level with label, label color, percentage of width, bar color
+`tooShort`          | object   | Yes      | _Above_    | enabled, label, label color, percentage of width, bar color for too short
 `minLevel`          | number   | Yes      | 2          | Min level to pass password validation
 `inputWraperStyle`  | object   | Yes      |            | Style for <View> wrapped password input
 `inputStyle`        | object/style   | Yes      |            | Style for password input
@@ -143,15 +147,15 @@ Prop                | Type     | Optional | Default    | Description
 `onChangeText`      | function | No       |            | Trigger when user inputs and password input finishes validation. Returns value and validation result
 
 
-Strength level object:
+Strength level object:  
 Property         | Type      |  Description
 ---------------- | --------- | ---------------------
 `label`          | string    |  Label for strength level description
 `labelColor`     | string    |  Color for strength level description label
 `widthPercent`   | number    |  Percentage of width for inner strength level bar
 `innerBarColor`  | string    |  Color for inner strength level bar
-
-Too short object:
+  
+Too short object:  
 Property         | Type       | Description
 ---------------- | ---------- | ---------------------
 `enabled`        | boolean    | Enable too short description
