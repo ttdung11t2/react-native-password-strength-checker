@@ -110,10 +110,10 @@ export default class PasswordStrengthChecker extends Component {
     }
     
     const rules = _.chain(ruleNames)
-      .split('|')
-      .filter(rule => !!rule)
-      .map(rule => rule.trim())
-      .value();
+        .split('|')
+        .filter(rule => !!rule)
+  .map(rule => rule.trim())
+  .value();
     
     for (const rule of rules) {
       if (!this.isMatchingRule(password, rule)) {
@@ -156,7 +156,7 @@ export default class PasswordStrengthChecker extends Component {
       });
       return 0;
     }
-    
+  
     this.setState({
       isTooShort: false
     });
@@ -221,7 +221,7 @@ export default class PasswordStrengthChecker extends Component {
         color: strengthLevels[level].labelColor
       };
       strengthLevelLabel = strengthLevels[level].label;
-      
+  
       if (tooShort.enabled && this.state.isTooShort) {
         strengthLevelBarStyle = {
           backgroundColor: tooShort.innerBarColor || strengthLevels[level].innerBarColor,
@@ -241,7 +241,7 @@ export default class PasswordStrengthChecker extends Component {
         </View>
         <Text style={[styles.strengthDescription, strengthDescriptionStyle, { ...strengthLevelLabelStyle }]}>{strengthLevelLabel}</Text>
       </View>
-    );
+  );
   }
   
   render() {
