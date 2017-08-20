@@ -97,14 +97,15 @@ export default class PasswordStrengthChecker extends Component {
   }
   
   isTooShort(password) {
-    if (!this.props.minLength) {
+    const { minLength } = this.props;
+    if (!minLength) {
       return true;
     }
-    return password.length < this.props.minLength;
+    return password.length < minLength;
   }
   
   isMatchingRules(password) {
-    const ruleNames = this.props.ruleNames;
+    const { ruleNames } = this.props;
     if (!ruleNames) {
       return true;
     }
@@ -150,7 +151,7 @@ export default class PasswordStrengthChecker extends Component {
       return -1;
     }
     
-    if (this.isTooShort(text) || !this.isMatchingRules(text)) {
+    if (this.isTooShort(text)) {
       this.setState({
         isTooShort: true
       });
@@ -160,6 +161,10 @@ export default class PasswordStrengthChecker extends Component {
     this.setState({
       isTooShort: false
     });
+    
+    if (!this.isMatchingRules(text)) {
+      return 0;
+    }
     
     return zxcvbn(text).score;
   }
@@ -178,8 +183,9 @@ export default class PasswordStrengthChecker extends Component {
   }
   
   renderPasswordInput() {
+    const { inputWrapperStyle, inputStyle } = this.props;
     return (
-      <View style={[styles.inputWrapper, this.props.inputWrapperStyle]}>
+      <View style={[styles.inputWrapper, inputWrapperStyle]}>
         <TextInput
           {...this.props}
           autoCapitalize="none"
@@ -187,7 +193,7 @@ export default class PasswordStrengthChecker extends Component {
           multiline={false}
           underlineColorAndroid="transparent"
           selectionColor="#fff"
-          style={[styles.input, this.props.inputStyle]}
+          style={[styles.input, inputStyle]}
           onChangeText={text => this.onChangeText(text)}
         />
       </View>

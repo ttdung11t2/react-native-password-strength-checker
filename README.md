@@ -68,6 +68,7 @@ const strengLevels = [
     minLength={8}
     strengthLevels={strengthLevels}
     ruleNames="symbols|words"
+    inputStyle={{ fontFamily: 'Montserrat', fontWeight: '500'}}
     onChangeText={(text, isValid) => this.setState({ password: { value: text, isValid: isValid } })} />
 ```
 
