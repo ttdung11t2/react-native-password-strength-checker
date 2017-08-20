@@ -4,6 +4,7 @@ A react-native password input with strength checker for both IOS and Android
 ## Features
 - Use zxcvbn to check password strength, combine with custom rules and password length
 - Compatible with both IOS and Android
+- Custom strength level
 - Custom style for password input and password strength
 
 ## Dependencies
@@ -67,24 +68,28 @@ const strengLevels = [
 ```
 
 ### Customization
-- Define min length for password. **Default**: `6`
-- Rules: _digits_, _letters_, _words_, _symbols_, _upperCase_, _lowerCase_.  
-Separate rules with **|**.  
-**Default**:  `'lowerCase|upperCase|digits|symbols'`
+- Define min length for password.
+**Default**: `6`
+- Rules: _digits_, _letters_, _words_, _symbols_, _upperCase_, _lowerCase_.
+Separate rules with **|**.
+**Default**:  `{ ruleNames: 'lowerCase|upperCase|digits|symbols' }`
 - Define min level to pass validation (0,1,2,3,4)
+**Default**: `{ minLevel: 2}`
 - Define and enable too short case:
 **Default**: `
-    tooShort: {
-      enabled: false,
-      labelColor: '#fff',
-      label: 'Too short',
-      widthPercent: '33',
-      innerBarColor: '#fe6c6c'
+    {
+        tooShort: {
+          enabled: false,
+          labelColor: '#fff',
+          label: 'Too short',
+          widthPercent: '33',
+          innerBarColor: '#fe6c6c'
+        }
     }
     `
     Enable to show it when password length is too short
-- Define strength labels and label colors, strength bar colors, percentage of width for each level  
-**Default**: `[
+- Define strength labels and label colors, strength bar colors, percentage of width for each level
+**Default**: ` { strengthLevels: [
       {
         label: 'Weak',
         labelColor: '#fff',
@@ -115,15 +120,15 @@ Separate rules with **|**.
         widthPercent: '100',
         innerBarColor: '#6cfeb5'
       }
-    ]`
+    ] }`
 
 ### Properties
-This component uses the same props as <TextInput>. Below are additional props for this component:  
+This component uses the same props as <TextInput>. Below are additional props for this component:
 
 Prop                | Type     | Optional | Default    | Description
 ------------------- | -------- | -------- | ---------- | ------------------
 `minLength`         | number   | Yes      | 6          | Min length for password
-`ruleNames`         | string   | Yes      | `lowerCase \|upperCase \|digits \|symbols` | List of rule name to check password
+`ruleNames`         | string   | Yes      | `lowerCase \| upperCase \| digits \| symbols` | List of rule name to check password
 `strengLevels`      | object array | Yes   |   | List of password strength level with label, label color, percentage of width, bar color
 `tooShort`          | object   | Yes      |            | enabled, label, label color, percentage of width, bar color for too short
 `minLevel`          | number   | Yes      | 2          | Min level to pass password validation
@@ -139,15 +144,15 @@ Prop                | Type     | Optional | Default    | Description
 
 
 Strength level object:
-Property         | Tyle      |  Description
----------------- | ---------------------
+Property         | Type      |  Description
+---------------- | --------- | ---------------------
 `label`          | string    |  Label for strength level description
 `labelColor`     | string    |  Color for strength level description label
 `widthPercent`   | number    |  Percentage of width for inner strength level bar
 `innerBarColor`  | string    |  Color for inner strength level bar
 
 Too short object:
-Property         | Tyle       | Description
+Property         | Type       | Description
 ---------------- | ---------- | ---------------------
 `enabled`        | boolean    | Enable too short description
 `label`          | string     |  Label for strength level description
@@ -155,6 +160,8 @@ Property         | Tyle       | Description
 `widthPercent`   | number     |  Percentage of width for inner strength level bar
 `innerBarColor`  | string     |  Color for inner strength level bar
 
+## Example
+See [EXAMPLE](example)
 
 ## License
 
