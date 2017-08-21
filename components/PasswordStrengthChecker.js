@@ -3,16 +3,16 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { View, TextInput, StyleSheet, Dimensions, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Dimensions, Text, Animated } from 'react-native';
 import zxcvbn from 'zxcvbn';
 import _ from 'lodash';
 
 const { width: wWidth } = Dimensions.get('window');
 
-function widthByPercent (percentage, containerWidth = wWidth) {
+const widthByPercent = (percentage, containerWidth = wWidth) => {
   const value = (percentage * containerWidth) / 100;
   return Math.round(value);
-}
+};
 
 const regex = {
   digitsPattern: /\d/,
@@ -90,10 +90,21 @@ export default class PasswordStrengthChecker extends Component {
   
   constructor(props) {
     super(props);
+    this.animatedInnerBarWidth = new Animated.Value(0);
+    this.animatedBarWidth = new Animated.Value(0);
     this.state = {
       level: -1,
       isTooShort: false
     }
+  }
+  
+  componentDidMount() {
+    const { barWidthPercent } = this.props;
+    const barWidth = widthByPercent(barWidthPercent);
+    Animated.timing(this.animatedBarWidth, {
+      toValue: barWidth,
+      duration: 1400
+    }).start();
   }
   
   isTooShort(password) {
@@ -216,11 +227,11 @@ export default class PasswordStrengthChecker extends Component {
     
     const { level } = this.state;
     
-    let strengthLevelBarStyle = {}, strengthLevelLabelStyle = {}, strengthLevelLabel = '';
+    let strengthLevelBarStyle = {}, strengthLevelLabelStyle = {}, strengthLevelLabel = '', innerBarWidth = 0;
     if (level !== -1) {
+      innerBarWidth = widthByPercent(strengthLevels[level].widthPercent, barWidth);
       strengthLevelBarStyle = {
-        backgroundColor: strengthLevels[level].innerBarColor,
-        width: widthByPercent(strengthLevels[level].widthPercent, barWidth)
+        backgroundColor: strengthLevels[level].innerBarColor
       };
       
       strengthLevelLabelStyle = {
@@ -229,9 +240,9 @@ export default class PasswordStrengthChecker extends Component {
       strengthLevelLabel = strengthLevels[level].label;
       
       if (tooShort.enabled && this.state.isTooShort) {
+        innerBarWidth = widthByPercent(tooShort.widthPercent, barWidth) || widthByPercent(strengthLevels[level].widthPercent, barWidth);
         strengthLevelBarStyle = {
-          backgroundColor: tooShort.innerBarColor || strengthLevels[level].innerBarColor,
-          width: widthByPercent(tooShort.widthPercent, barWidth) || widthByPercent(strengthLevels[level].widthPercent, barWidth)
+          backgroundColor: tooShort.innerBarColor || strengthLevels[level].innerBarColor
         };
         strengthLevelLabelStyle = {
           color: tooShort.labelColor || strengthLevels[level].labelColor
@@ -240,11 +251,16 @@ export default class PasswordStrengthChecker extends Component {
       }
     }
     
+    Animated.timing(this.animatedInnerBarWidth, {
+      toValue: innerBarWidth,
+      duration: 800
+    }).start();
+    
     return (
       <View style={[styles.passwordStrengthWrapper, strengthWrapperStyle]}>
-        <View style={[styles.passwordStrengthBar, strengthBarStyle, { backgroundColor: barColor, width: barWidth }]}>
-          <View style={[styles.innerPasswordStrengthBar, innerStrengthBarStyle, { ...strengthLevelBarStyle }]} />
-        </View>
+        <Animated.View style={[styles.passwordStrengthBar, strengthBarStyle, { backgroundColor: barColor, width: this.animatedBarWidth }]}>
+          <Animated.View style={[styles.innerPasswordStrengthBar, innerStrengthBarStyle, { ...strengthLevelBarStyle, width: this.animatedInnerBarWidth }]} />
+        </Animated.View>
         <Text style={[styles.strengthDescription, strengthDescriptionStyle, { ...strengthLevelLabelStyle }]}>{strengthLevelLabel}</Text>
       </View>
     );

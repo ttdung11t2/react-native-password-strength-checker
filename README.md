@@ -3,7 +3,8 @@ A react-native password input with strength checker for both IOS and Android
 
 ## Features
 - Use zxcvbn to check password strength, combine with custom rules and password length
-- Compatible with both IOS and Android
+- Support for both IOS and Android, use ES6 React native
+- Animated strength bar
 - Custom strength level
 - Custom style for password input and password strength
 
@@ -12,7 +13,7 @@ This Component is built using [Dropbox zxcvbn password strength estimator librar
 
 ## Screenshots
 
-![2017-08-21 01_27_00](https://thumbs.gfycat.com/BackSecondhandHoverfly-size_restricted.gif)
+![2017-08-22 12_19_00](https://thumbs.gfycat.com/BoldActiveAlaskajingle-size_restricted.gif)
 
 ## Installation
 
@@ -170,4 +171,5 @@ See [EXAMPLE](example)
 
 ## License
 
-react-native-password-strength-checker is released under the MIT license. See [LICENSE](LICENSE) for details.
+react-native-password-strength-checker is released under the MIT license. See [LICENSE](LICENSE) for details.  
+Any question or support will welcome.
