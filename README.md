@@ -64,25 +64,26 @@ const strengLevels = [
 
 ...
 
-<PasswordStrength
-    secureTextEntry
-    minLength={8}
-    strengthLevels={strengthLevels}
-    ruleNames="symbols|words"
-    inputStyle={{ fontFamily: 'Montserrat', fontWeight: '500'}}
-    onChangeText={(text, isValid) => this.setState({ password: { value: text, isValid: isValid } })} />
+  <PasswordStrength
+      secureTextEntry
+      minLength={8}
+      strengthLevels={strengthLevels}
+      ruleNames="symbols|words"
+      inputStyle={{ fontFamily: 'Montserrat', fontWeight: '500'}}
+      onChangeText={(text, isValid) => this.setState({ password: { value: text, isValid: isValid } })} 
+  />
 ```
 
 ### Customization
 - Define min length for password.  
-**Default**: `6`
+  **Default**: `6`
 - Rules: _digits_, _letters_, _words_, _symbols_, _upperCase_, _lowerCase_.  
 Separate rules with **|**.  
-**Default**:  `{ ruleNames: 'lowerCase|upperCase|digits|symbols' }`
+  **Default**:  `{ ruleNames: 'lowerCase|upperCase|digits|symbols' }`
 - Define min level to pass validation (0,1,2,3,4)  
-**Default**: `{ minLevel: 2}`
+  **Default**: `{ minLevel: 2}`
 - Define and enable too short case:  
-**Default**: `
+  **Default**: `
     {
         tooShort: {
           enabled: false,
@@ -93,7 +94,7 @@ Separate rules with **|**.
         }
     }
     `  
-    Enable to show it when password length is too short
+    If you want to show 'too short', Enable it to show when password length is too short
 - Define strength labels and label colors, strength bar colors, percentage of width for each level  
 **Default**: ` { strengthLevels: [
       {
@@ -147,29 +148,31 @@ Prop        | Type    | Optional | Defaul  | Description
 `barColor`          | string   | Yes      |  `'#ffffff'` | Color of filled password strength bar
 `barWidthPercent`   | number   | Yes       | 70        | Percentage of password strength bar width
 `onChangeText`      | function | No       |            | Trigger when user inputs and password input finishes validation. Returns value and validation result
-
+  
 
 Strength level object:  
 Property         | Type      |  Description
----------------- | --------- | ---------------------
+---------------- | --------- | ------------------------------------
 `label`          | string    |  Label for strength level description
 `labelColor`     | string    |  Color for strength level description label
 `widthPercent`   | number    |  Percentage of width for inner strength level bar
 `innerBarColor`  | string    |  Color for inner strength level bar
   
+  
 Too short object:  
 Property         | Type       | Description
----------------- | ---------- | ---------------------
+---------------- | ---------- | -----------------------------------
 `enabled`        | boolean    | Enable too short description
 `label`          | string     |  Label for strength level description
 `labelColor`     | string     |  Color for strength level description label
 `widthPercent`   | number     |  Percentage of width for inner strength level bar
 `innerBarColor`  | string     |  Color for inner strength level bar
-
+  
 ## Example
 See [EXAMPLE](example)
 
 ## License
 
 react-native-password-strength-checker is released under the MIT license. See [LICENSE](LICENSE) for details.  
+  
 Any question or support will welcome.

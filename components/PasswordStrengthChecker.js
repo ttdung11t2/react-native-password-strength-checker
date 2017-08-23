@@ -2,7 +2,8 @@
  * Created by dungtran on 8/20/17.
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { View, TextInput, StyleSheet, Dimensions, Text, Animated } from 'react-native';
 import zxcvbn from 'zxcvbn';
 import _ from 'lodash';
@@ -103,7 +104,7 @@ export default class PasswordStrengthChecker extends Component {
     const barWidth = widthByPercent(barWidthPercent);
     Animated.timing(this.animatedBarWidth, {
       toValue: barWidth,
-      duration: 1400
+      duration: 1000
     }).start();
   }
   
