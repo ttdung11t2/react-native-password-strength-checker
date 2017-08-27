@@ -62,16 +62,19 @@ const strengLevels = [
       }
 ];
 
-...
-
-  <PasswordStrength
-      secureTextEntry
-      minLength={8}
-      strengthLevels={strengthLevels}
-      ruleNames="symbols|words"
-      inputStyle={{ fontFamily: 'Montserrat', fontWeight: '500'}}
-      onChangeText={(text, isValid) => this.setState({ password: { value: text, isValid: isValid } })} 
-  />
+render() {
+  return (
+    ...
+    <PasswordStrength
+        secureTextEntry
+        minLength={8}
+        strengthLevels={strengthLevels}
+        ruleNames="symbols|words"
+        inputStyle={{ fontFamily: 'Montserrat', fontWeight: '500'}}
+        onChangeText={(text, isValid) => this.setState({ password: { value: text, isValid: isValid } })} 
+    />
+  )
+}
 ```
 
 ### Customization
@@ -151,6 +154,7 @@ Prop        | Type    | Optional | Defaul  | Description
   
 
 Strength level object:  
+
 Property         | Type      |  Description
 ---------------- | --------- | ------------------------------------
 `label`          | string    |  Label for strength level description
@@ -160,6 +164,7 @@ Property         | Type      |  Description
   
   
 Too short object:  
+
 Property         | Type       | Description
 ---------------- | ---------- | -----------------------------------
 `enabled`        | boolean    | Enable too short description
