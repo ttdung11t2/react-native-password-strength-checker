@@ -27,7 +27,7 @@ const regex = {
 export default class PasswordStrengthChecker extends Component {
   static defaultProps = {
     minLevel: 2,
-    minLength: 6,
+    minLength: 0,
     ruleNames: 'lowerCase|upperCase|digits|symbols',
     strengthLevels: [
       {
@@ -190,7 +190,7 @@ export default class PasswordStrengthChecker extends Component {
     this.setState({
       level: level
     });
-    const isValid = level >= this.props.minLevel;
+    const isValid = this.isMatchingRules(password) && level >= this.props.minLevel;
     this.props.onChangeText(password, isValid);
   }
   

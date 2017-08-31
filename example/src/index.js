@@ -31,6 +31,10 @@ class example extends Component {
     };
   }
   
+  _onChangePassword(password, isValid) {
+    this.setState({ password: { value: password, isValid: isValid } })
+  }
+  
   render() {
     // Define list of strength
     const strengthLevels = [
@@ -118,14 +122,14 @@ class example extends Component {
             <Text style={styles.inputLabel}>PASSWORD</Text>
             <PasswordStrength
               secureTextEntry
-              minLength={8}
+              minLength={4}
               ruleNames="symbols|words"
               strengthLevels={strengthLevels}
               tooShort={tooShort}
-              minLevel={3}
+              minLevel={0}
               barWidthPercent={65}
               barColor="#ccc"
-              onChangeText={(text, isValid) => this.setState({ password: { value: text, isValid: isValid } })} />
+              onChangeText={(text, isValid) => this._onChangePassword(text, isValid)} />
           </View>
         </ScrollView>
       </View>

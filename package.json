@@ -10,14 +10,15 @@
     "react",
     "react-component",
     "react-native",
-    "react-native-componet",
+    "react-native-component",
     "android",
     "ios",
     "textinput",
     "password",
     "strength",
     "password-strength",
-    "strength-checker"
+    "strength-checker",
+    "password-strength-checker"
   ],
   "dependencies": {
     "lodash": "^4.17.4",

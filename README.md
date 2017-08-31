@@ -5,7 +5,9 @@ A react-native password input with strength checker for both IOS and Android
 - Use zxcvbn to check password strength, combine with custom rules and password length
 - Support for both IOS and Android, use ES6 React native
 - Animated strength bar
-- Custom strength level
+- Check password is too short
+- Check password not match rules
+- Custom strength level (corresponding to 5 levels)
 - Custom style for password input and password strength
 
 ## Dependencies
@@ -79,7 +81,7 @@ render() {
 
 ### Customization
 - Define min length for password.  
-  **Default**: `6`
+  **Default**: `0`
 - Rules: _digits_, _letters_, _words_, _symbols_, _upperCase_, _lowerCase_.  
 Separate rules with **|**.  
   **Default**:  `{ ruleNames: 'lowerCase|upperCase|digits|symbols' }`
@@ -137,7 +139,7 @@ This component uses the same props as <TextInput>. Below are additional props fo
 
 Prop        | Type    | Optional | Defaul  | Description
 ----------- | ------- | -------- | ------- | -----------------------
-`minLength`         | number   | Yes      | 6          | Min length for password
+`minLength`         | number   | Yes      | 0          | Min length for password
 `ruleNames`         | string   | Yes      | _Above_      | List of rule name to check password
 `strengLevels`      | object array | Yes   | _Above_    | List of password strength level with label, label color, percentage of width, bar color
 `tooShort`          | object   | Yes      | _Above_    | enabled, label, label color, percentage of width, bar color for too short
@@ -175,7 +177,12 @@ Property         | Type       | Description
   
 ## Example
 See [EXAMPLE](example)
-
+```sh
+git clone https://github.com/ttdung11t2/react-native-password-strength-checker.git
+cd react-native-password-strength-checker/example
+npm install
+react-native run-ios / react-native run-android
+```
 ## License
 
 react-native-password-strength-checker is released under the MIT license. See [LICENSE](LICENSE) for details.  
