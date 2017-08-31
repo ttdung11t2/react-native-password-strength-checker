@@ -199,12 +199,12 @@ export default class PasswordStrengthChecker extends Component {
     return (
       <View style={[styles.inputWrapper, inputWrapperStyle]}>
         <TextInput
-          {...this.props}
+          selectionColor="#fff"
           autoCapitalize="none"
           autoCorrect={false}
           multiline={false}
           underlineColorAndroid="transparent"
-          selectionColor="#fff"
+          {...this.props}
           style={[styles.input, inputStyle]}
           onChangeText={text => this.onChangeText(text)}
         />

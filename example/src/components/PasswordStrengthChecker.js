@@ -169,7 +169,7 @@ export default class PasswordStrengthChecker extends Component {
       });
       return 0;
     }
-  
+    
     this.setState({
       isTooShort: false
     });
@@ -199,12 +199,12 @@ export default class PasswordStrengthChecker extends Component {
     return (
       <View style={[styles.inputWrapper, inputWrapperStyle]}>
         <TextInput
-          {...this.props}
+          selectionColor="#fff"
           autoCapitalize="none"
           autoCorrect={false}
           multiline={false}
           underlineColorAndroid="transparent"
-          selectionColor="#fff"
+          {...this.props}
           style={[styles.input, inputStyle]}
           onChangeText={text => this.onChangeText(text)}
         />
@@ -239,7 +239,7 @@ export default class PasswordStrengthChecker extends Component {
         color: strengthLevels[level].labelColor
       };
       strengthLevelLabel = strengthLevels[level].label;
-  
+      
       if (tooShort.enabled && this.state.isTooShort) {
         innerBarWidth = widthByPercent(tooShort.widthPercent, barWidth) || widthByPercent(strengthLevels[level].widthPercent, barWidth);
         strengthLevelBarStyle = {
@@ -251,7 +251,7 @@ export default class PasswordStrengthChecker extends Component {
         strengthLevelLabel = tooShort.label || strengthLevels[level].label;
       }
     }
-  
+    
     Animated.timing(this.animatedInnerBarWidth, {
       toValue: innerBarWidth,
       duration: 800
@@ -264,7 +264,7 @@ export default class PasswordStrengthChecker extends Component {
         </Animated.View>
         <Text style={[styles.strengthDescription, strengthDescriptionStyle, { ...strengthLevelLabelStyle }]}>{strengthLevelLabel}</Text>
       </View>
-  );
+    );
   }
   
   render() {
