@@ -69,7 +69,8 @@ export default class PasswordStrengthChecker extends Component {
       innerBarColor: '#fe6c6c'
     },
     barColor: '#ffffff',
-    barWidthPercent: 70
+    barWidthPercent: 70,
+    showBarOnEmpty: true
   };
   
   static propTypes = {
@@ -86,7 +87,8 @@ export default class PasswordStrengthChecker extends Component {
     innerStrengthBarStyle: View.propTypes.style,
     strengthDescriptionStyle: Text.propTypes.style,
     barColor: PropTypes.string,
-    barWidthPercent: PropTypes.number
+    barWidthPercent: PropTypes.number,
+    showBarOnEmpty: PropTypes.bool
   };
   
   constructor(props) {
@@ -100,11 +102,18 @@ export default class PasswordStrengthChecker extends Component {
   }
   
   componentDidMount() {
+    const { showBarOnEmpty } = this.props;
+    if (showBarOnEmpty) {
+      this.showFullBar();
+    }
+  }
+  
+  showFullBar(isShow = true) {
     const { barWidthPercent } = this.props;
-    const barWidth = widthByPercent(barWidthPercent);
+    const barWidth = isShow ? widthByPercent(barWidthPercent) : 0;
     Animated.timing(this.animatedBarWidth, {
       toValue: barWidth,
-      duration: 1000
+      duration: 20
     }).start();
   }
   
@@ -221,7 +230,8 @@ export default class PasswordStrengthChecker extends Component {
       strengthWrapperStyle,
       strengthBarStyle,
       innerStrengthBarStyle,
-      strengthDescriptionStyle
+      strengthDescriptionStyle,
+      showBarOnEmpty
     } = this.props;
     
     const barWidth = widthByPercent(barWidthPercent);
@@ -230,6 +240,11 @@ export default class PasswordStrengthChecker extends Component {
     
     let strengthLevelBarStyle = {}, strengthLevelLabelStyle = {}, strengthLevelLabel = '', innerBarWidth = 0;
     if (level !== -1) {
+  
+      if (!showBarOnEmpty) {
+        this.showFullBar();
+      }
+      
       innerBarWidth = widthByPercent(strengthLevels[level].widthPercent, barWidth);
       strengthLevelBarStyle = {
         backgroundColor: strengthLevels[level].innerBarColor
@@ -249,6 +264,10 @@ export default class PasswordStrengthChecker extends Component {
           color: tooShort.labelColor || strengthLevels[level].labelColor
         };
         strengthLevelLabel = tooShort.label || strengthLevels[level].label;
+      }
+    } else {
+      if (!showBarOnEmpty) {
+        this.showFullBar(false);
       }
     }
     

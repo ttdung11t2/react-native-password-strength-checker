@@ -31,6 +31,7 @@ import PasswordStrengthChecker from 'react-native-password-strength-checker';
 ```
 Use as a component:  
 ```javascript
+// Define streng level list
 const strengLevels = [
       {
         label: 'Weak',
@@ -64,15 +65,26 @@ const strengLevels = [
       }
 ];
 
+// Define too short object
+const tooShort = {
+      enabled: true,
+      label: 'Too short',
+      labelColor: 'red'
+};
+
 render() {
   return (
     ...
     <PasswordStrength
         secureTextEntry
-        minLength={8}
-        strengthLevels={strengthLevels}
+        minLength={4}
         ruleNames="symbols|words"
-        inputStyle={{ fontFamily: 'Montserrat', fontWeight: '500'}}
+        strengthLevels={strengthLevels}
+        tooShort={tooShort}
+        minLevel={0}
+        barWidthPercent={65}
+        showBarOnEmpty={true}
+        barColor="#ccc"
         onChangeText={(text, isValid) => this.setState({ password: { value: text, isValid: isValid } })} 
     />
   )
@@ -153,7 +165,7 @@ Prop        | Type    | Optional | Defaul  | Description
 `barColor`          | string   | Yes      |  `'#ffffff'` | Color of filled password strength bar
 `barWidthPercent`   | number   | Yes       | 70        | Percentage of password strength bar width
 `onChangeText`      | function | No       |            | Trigger when user inputs and password input finishes validation. Returns value and validation result
-  
+`showBarOnEmpty`    | boolean  | Yes      | `true`     | Only show strength bar when input is empty or not
 
 Strength level object:  
 

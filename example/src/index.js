@@ -128,6 +128,7 @@ class example extends Component {
               tooShort={tooShort}
               minLevel={0}
               barWidthPercent={65}
+              showBarOnEmpty={true}
               barColor="#ccc"
               onChangeText={(text, isValid) => this._onChangePassword(text, isValid)} />
           </View>
