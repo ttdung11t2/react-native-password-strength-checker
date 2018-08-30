@@ -207,7 +207,7 @@ export default class PasswordStrengthChecker extends Component {
     this.setState({
       level: level
     });
-    const isValid = this.isMatchingRules(password) && level >= this.props.minLevel;
+    const isValid = this.isMatchingRules(password) && !this.state.isTooShort && level >= this.props.minLevel;
     this.props.onChangeText(password, isValid);
   }
 
