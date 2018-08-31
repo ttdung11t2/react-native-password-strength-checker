@@ -103,6 +103,7 @@ This component uses the same props as `<TextInput>`. Below are additional props 
 
 Prop        | Type    | Default  | Description
 ----------- | ------- | ------- | -----------------------
+`onChangeText`      | function    |     | **Required**. Trigger when user inputs and password input finishes validation. Returns value and validation result
 `secureTextEntry`   | boolean     | `false`    | Same as [TextInput#secureTextEntry](https://facebook.github.io/react-native/docs/textinput#securetextentry)
 `minLength`         | number      | 0          | Min length for password
 `ruleNames`         | string      | _Above_  | List of rule names to check the password. Any combination of _digits_, _letters_, _words_, _symbols_, _upperCase_, _lowerCase_. Separate rules with **|**.
@@ -117,7 +118,6 @@ Prop        | Type    | Default  | Description
 `strengthDescriptionStyle` | object/style  |        | Style for password strength description
 `barColor`          | string      |  `'#ffffff'` | Color of filled password strength bar
 `barWidthPercent`   | number       | 70    | Percentage of password strength bar width
-`onChangeText`      | function    |     | **Required**. Trigger when user inputs and password input finishes validation. Returns value and validation result
 `showBarOnEmpty`    | boolean    | `true`     | If `true`, show strength bar even if the  empty or not
 
 #### StrengthLevel object:

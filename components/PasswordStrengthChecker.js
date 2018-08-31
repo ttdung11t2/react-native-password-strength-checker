@@ -3,8 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { View, ViewPropTypes, TextInput, StyleSheet, Dimensions, Text, Animated } from 'react-native';
+import { View, TextInput, StyleSheet, Dimensions, Text, Animated } from 'react-native';
 import zxcvbn from 'zxcvbn';
 import _ from 'lodash';
 
@@ -71,24 +70,6 @@ export default class PasswordStrengthChecker extends Component {
     barColor: '#ffffff',
     barWidthPercent: 70,
     showBarOnEmpty: true
-  };
-
-  static propTypes = {
-    onChangeText: PropTypes.func.isRequired,
-    minLength: PropTypes.number,
-    ruleNames: PropTypes.string,
-    strengthLevels: PropTypes.array,
-    tooShort: PropTypes.object,
-    minLevel: PropTypes.number,
-    inputWrapperStyle: ViewPropTypes.style,
-    inputStyle: TextInput.propTypes.style,
-    strengthWrapperStyle: ViewPropTypes.style,
-    strengthBarStyle: ViewPropTypes.style,
-    innerStrengthBarStyle: ViewPropTypes.style,
-    strengthDescriptionStyle: Text.propTypes.style,
-    barColor: PropTypes.string,
-    barWidthPercent: PropTypes.number,
-    showBarOnEmpty: PropTypes.bool
   };
 
   constructor(props) {
