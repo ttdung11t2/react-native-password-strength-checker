@@ -22,7 +22,6 @@
   ],
   "dependencies": {
     "lodash": "^4.17.4",
-    "prop-types": "^15.5.10",
     "zxcvbn": "^4.4.2"
   },
   "homepage": "https://github.com/ttdung11t2/react-native-password-strength-checker.git",
